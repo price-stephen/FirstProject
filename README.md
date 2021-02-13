@@ -26,4 +26,4 @@ Stretch:
 
 1.	As a user I should be able to choose another option to boost stats instead of fighting. These options will increase/decrease the attributes of my power, accuracy or health. 
 
-2.	As a user I should experience interact elements on the page. 
+2.	As a user I should experience interactive elements on the page. 
