@@ -63,18 +63,20 @@ class Wrestler {
 
 				if (eatCornResult == 0){
 					this.power += 2
-					this.accuracy -= 2
+					this.accuracy -= 1
 					let $powerNumber = $('#powerNumber')
 					$powerNumber.text(this.power)
 
 					let $accuracyNumber = $('#accuracyNumber')
 					$accuracyNumber.text(this.accuracy)
+					cornAudio.play()
 
 
-					$('#logParagraph').text("You ate corn and increased your power by +2 points to " + this.power + " but you decreased your accuracy by -2 to " + this.accuracy + ".")
+					$('#logParagraph').text("You ate corn and increased your power by +2 points to " + this.power + " but you decreased your accuracy by -1 to " + this.accuracy + ".")
 				}
 
 				else {
+					thatCornAudio.play()
 					$('#logParagraph').text("Your attempt to get that corn was unsuccessful.")
 				}
 
@@ -86,7 +88,7 @@ class Wrestler {
 		let eatSaladResult = Math.floor(Math.random() * 2)
 
 				if (eatSaladResult == 0){
-					this.power -= 2
+					this.power -= 1
 					this.accuracy += 2
 					let $powerNumber = $('#powerNumber')
 					$powerNumber.text(this.power)
@@ -95,7 +97,7 @@ class Wrestler {
 					$accuracyNumber.text(this.accuracy)
 
 
-					$('#logParagraph').text("You ate a salad and increased your accuracy by +2 points to " + this.accuracy + " but you decreased your power by -2 to " + this.power + ".")
+					$('#logParagraph').text("You ate a salad and increased your accuracy by +2 points to " + this.accuracy + " but you decreased your power by -1 to " + this.power + ".")
 				}	
 				else {
 					$('#logParagraph').text("I'm sorry you were unable to have just like a salad.")
@@ -170,11 +172,13 @@ let nachoAudio = new Audio("Sounds/NachoA.mp3")
 let greatestFighterAudio = new Audio("Sounds/FighterA.mp3")
 let saladAudio = new Audio("Sounds/LikeASaladA.mp3")
 let cornAudio = new Audio("Sounds/CornA.mp3")
+let thatCornAudio = new Audio("Sounds/CornFace.mp3")
 let takeItEasyAudio = new Audio("Sounds/TakeItEasyA.m4a")
 let sucksToBeMeAudio = new Audio("Sounds/SucksToBeMeA.mp3")
 let borrowSweatsAudio = new Audio("Sounds/SweatsA.mp3")
 let ramsesAudio = new Audio("Sounds/RamsesA.mp3")
 let escapeAudio = new Audio("Sounds/EscapeA.mp3")
+
 
 
 
@@ -233,7 +237,7 @@ const fight = () => {
 
 		if (ramses.health <= 0){
 			nachoAudio.play()
-			if(confirm("You defeated Ramses! You are the best!")){
+			if(confirm("You defeated Ramses! You are the best! Play again?")){
 				window.location.reload()
 			}
 			$('body').hide()
@@ -242,7 +246,7 @@ const fight = () => {
 		
 		if (nacho.health <= 0){
 			sucksToBeMeAudio.play()
-			if(confirm("Oh no you lost!")){
+			if(confirm("Oh no you lost! Play again?")){
 				window.location.reload()
 			}
 			$('body').hide()			
@@ -266,7 +270,7 @@ const avoid = () => {
 			
 		if (ramses.health <= 0){
 			nachoAudio.play()
-			if(confirm("You defeated Ramses! You are the best!")){
+			if(confirm("You defeated Ramses! You are the best! Play again?")){
 				window.location.reload()
 			}
 			$('body').hide()
@@ -275,7 +279,7 @@ const avoid = () => {
 		
 		if (nacho.health <= 0){
 			sucksToBeMeAudio.play()
-			if(confirm("Oh no you lost!")){
+			if(confirm("Oh no you lost! Play again?")){
 				window.location.reload()
 			}
 			$('body').hide()			
@@ -287,7 +291,7 @@ const avoid = () => {
 
 const eatCorn = () => {
 	nacho.eatCorn()	
-	cornAudio.play()
+	
 	$('#fight-ramses').hide()
 	$('#eatCorn').hide()
 	$('#borrowSweats').hide()
@@ -299,7 +303,7 @@ const eatCorn = () => {
 	
 		if (ramses.health <= 0){
 			nachoAudio.play()
-			if(confirm("You defeated Ramses! You are the best!")){
+			if(confirm("You defeated Ramses! You are the best! Play again?")){
 				window.location.reload()
 			}
 			$('body').hide()
@@ -308,7 +312,7 @@ const eatCorn = () => {
 		
 		if (nacho.health <= 0){
 			sucksToBeMeAudio.play()
-			if(confirm("Oh no you lost!")){
+			if(confirm("Oh no you lost! Play again?")){
 				window.location.reload()
 			}
 			$('body').hide()			
@@ -331,7 +335,7 @@ const eatSalad = () => {
 	
 		if (ramses.health <= 0){
 			nachoAudio.play()
-			if(confirm("You defeated Ramses! You are the best!")){
+			if(confirm("You defeated Ramses! You are the best! Play again?")){
 				window.location.reload()
 			}
 			$('body').hide()
@@ -340,7 +344,7 @@ const eatSalad = () => {
 		
 		if (nacho.health <= 0){
 			sucksToBeMeAudio.play()
-			if(confirm("Oh no you lost!")){
+			if(confirm("Oh no you lost! Play again?")){
 				window.location.reload()
 			}
 			$('body').hide()			
@@ -364,7 +368,7 @@ const eatLordsChips = () => {
 	
 		if (ramses.health <= 0){
 			nachoAudio.play()
-			if(confirm("You defeated Ramses! You are the best!")){
+			if(confirm("You defeated Ramses! You are the best! Play again?")){
 				window.location.reload()
 			}
 			$('body').hide()
@@ -373,7 +377,7 @@ const eatLordsChips = () => {
 		
 		if (nacho.health <= 0){
 			sucksToBeMeAudio.play()
-			if(confirm("Oh no you lost!")){
+			if(confirm("Oh no you lost! Play again?")){
 				window.location.reload()
 			}
 			$('body').hide()			
@@ -395,7 +399,7 @@ const borrowSweats = () => {
 	
 		if (ramses.health <= 0){
 			nachoAudio.play()
-			if(confirm("You defeated Ramses! You are the best!")){
+			if(confirm("You defeated Ramses! You are the best! Play again?")){
 				window.location.reload()
 			}
 			$('body').hide()
@@ -404,7 +408,7 @@ const borrowSweats = () => {
 		
 		if (nacho.health <= 0){
 			sucksToBeMeAudio.play()
-			if(confirm("Oh no you lost!")){
+			if(confirm("Oh no you lost!Play again?")){
 				window.location.reload()
 			}
 			$('body').hide()			
